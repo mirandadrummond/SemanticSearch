@@ -1,3 +1,4 @@
+import tqdm
 # Store the dataset in Milvus db
 # Declare the required variables like collection name etc.
 COLLECTION_NAME = "arxiv_10000"
