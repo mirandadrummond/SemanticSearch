@@ -33,3 +33,4 @@ build/
 /env
 env
 arxiv100.xlsx
+*.csv
