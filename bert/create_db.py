@@ -69,7 +69,7 @@ index_params = {
 collection.create_index(field_name = "embedding", index_params = index_params)
 collection.load()
 
-for batch in tqdm(np.array_split(arxiv_e, (COUNT//BATCH_SIZE) + 1), desc="Processing batches"):
+for batch in tqdm(np.array_split(arxiv_e, 10), desc="Processing batches"):
     data = [
         batch['title'].tolist(),
         batch['abstract'].tolist(),
@@ -81,9 +81,7 @@ for batch in tqdm(np.array_split(arxiv_e, (COUNT//BATCH_SIZE) + 1), desc="Proces
 
 collection.flush()
 
-def search_similar_texts(query_text, TOPK=5):
-    query_text = ["What papers talk about astrophysics?", "What are the papers on that discuss computer architecture?"]
-
+def search_similar_texts(query_text= "tell me about astrophysics", TOPK=5):
     search_data = generate_embeddings(query_text)
 
     start = time.time()
